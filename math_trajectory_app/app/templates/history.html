@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}История тестов — Math Trajectory{% endblock %}
+{% block content %}
+  <h2 class="mb-4">История тестов</h2>
+  {% if history %}
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-history">
+        <thead class="table-light">
+          <tr>
+            <th>Дата и время</th>
+            <th>Баллы</th>
+            <th>Всего вопросов</th>
+            <th>Можно изучать сейчас</th>
+            <th>Требуют подготовки</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for entry in history %}
+            <tr>
+              <td>{{ entry.test_date }}</td>
+              <td>{{ entry.score }}</td>
+              <td>{{ entry.total }}</td>
+              <td>
+                {% if entry.can_study_now %}
+                  {{ entry.can_study_now|join(', ') }}
+                {% else %}
+                  —
+                {% endif %}
+              </td>
+              <td>
+                {% if entry.study_later_with_prereqs %}
+                  <ul class="mb-0">
+                    {% for topic, deps in entry.study_later_with_prereqs %}
+                      <li>{{ topic }} ({{ deps|join(', ') }})</li>
+                    {% endfor %}
+                  </ul>
+                {% else %}
+                  —
+                {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <p>У вас ещё нет пройденных тестов.</p>
+  {% endif %}
+
+  <a class="btn btn-outline-secondary mt-3" href="{{ url_for('index') }}">← На главную</a>
+{% endblock %}

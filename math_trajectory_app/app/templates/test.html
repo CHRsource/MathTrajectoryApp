@@ -1,0 +1,33 @@
+{# test.html #}
+{% extends "base.html" %}
+{% block title %}Тест — Math Trajectory{% endblock %}
+{% block content %}
+  <h2 class="mb-4">Тестирование</h2>
+  <form method="post">
+    {% for q in questions %}
+      <div class="test-question">
+        <p><strong>Вопрос {{ q.question_number }}:</strong></p>
+        <img src="{{ url_for('static', filename='questions_answers/' ~ q.question_image) }}"
+             alt="Вопрос"
+             class="img-fluid mb-3 question-image">
+        <div class="row">
+          {% for val, img in q.shuffled_answers %}
+            <div class="col-6 col-md-3 mb-2 text-center">
+              <label class="d-block border rounded p-2 cursor-pointer">
+                <input type="radio"
+                       name="{{ q.topic_id }}_{{ q.id }}"
+                       value="{{ val }}"
+                       class="form-check-input me-2"
+                       required>
+                <img src="{{ url_for('static', filename='questions_answers/' ~ img) }}"
+                     alt="Ответ"
+                     class="img-fluid answer-image">
+              </label>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary btn-lg">Отправить</button>
+  </form>
+{% endblock %}

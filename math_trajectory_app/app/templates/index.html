@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Главная — Math Trajectory{% endblock %}
+{% block content %}
+  <div class="text-center py-5">
+    <h1 class="mb-4">Добро пожаловать в систему</h1>
+
+    {% if session.user_id %}
+      <div class="d-flex justify-content-center mb-4 gap-3 flex-wrap">
+        <a class="btn btn-lg btn-primary" href="{{ url_for('test') }}">Начать тест</a>
+        <button
+          class="btn btn-lg btn-success"
+          data-bs-toggle="modal"
+          data-bs-target="#scoresModal">
+          Показать график баллов
+        </button>
+        <a class="btn btn-lg btn-secondary" href="{{ url_for('history') }}">История тестов</a>
+      </div>
+    {% else %}
+      <p>Пожалуйста, войдите или зарегистрируйтесь, чтобы начать.</p>
+    {% endif %}
+  </div>
+
+  <!-- Модальное окно для графика -->
+  <div class="modal fade" id="scoresModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">График баллов</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img
+            src="{{ url_for('score_plot') }}"
+            alt="График баллов"
+            class="img-fluid"
+            onerror="this.style.display='none'; document.getElementById('no-data-msg').style.display='block';">
+          <p id="no-data-msg" class="text-muted mt-3" style="display:none;">
+            У вас ещё нет результатов тестов.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

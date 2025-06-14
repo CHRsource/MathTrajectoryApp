@@ -1,0 +1,50 @@
+/* Сбросим фон страницы */
+body.bg-light {
+  background-color: #f5f5f5 !important;
+}
+
+/* Увеличим курсор при наведении на вопрос */
+.test-question label {
+  cursor: pointer;
+  transition: background .2s;
+}
+.test-question label:hover {
+  background-color: rgba(0, 123, 255, 0.1);
+}
+
+/* Чуть больше отступы для карточек и таблиц */
+.card, .test-question, .table-history {
+  margin-bottom: 1.5rem;
+}
+
+/* Доп. отступы в навбаре */
+.navbar .btn {
+  margin-left: 0.5rem;
+}
+
+.question-image, .answer-image {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 10px;
+}
+
+.test-question {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #а;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+}
+
+label.cursor-pointer {
+    cursor: pointer;
+    background-color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease;
+}
+
+label.cursor-pointer:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}

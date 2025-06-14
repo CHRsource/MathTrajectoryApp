@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Результаты — Math Trajectory{% endblock %}
+{% block content %}
+  {% if score is not none and total is not none %}
+    <div class="alert alert-info">
+      Ваш результат: <strong>{{ score }}</strong> из <strong>{{ total }}</strong>
+    </div>
+  {% endif %}
+
+  <h2 class="mt-4">Темы, которые можно изучить сейчас</h2>
+  {% if data.can_study_now %}
+    <ul class="list-group mb-4">
+      {% for t in data.can_study_now %}
+        <li class="list-group-item">{{ t }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p><em>Все доступные темы уже изучены.</em></p>
+  {% endif %}
+
+  <h2 class="mt-4">Темы, требующие предварительной подготовки</h2>
+  {% if data.study_later_with_prereqs %}
+    <ul class="list-group mb-4">
+      {% for topic, deps in data.study_later_with_prereqs %}
+        <li class="list-group-item">
+          {{ topic }} <small class="text-muted">(нужно изучить: {{ deps|join(', ') }})</small>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p><em>Нет тем, требующих подготовки.</em></p>
+  {% endif %}
+
+  <p class="mt-4">
+    <a class="btn btn-secondary" href="{{ url_for('reset') }}">Начать тест заново</a>
+    <a class="btn btn-outline-secondary ms-2" href="{{ url_for('index') }}">На главную</a>
+  </p>
+{% endblock %}

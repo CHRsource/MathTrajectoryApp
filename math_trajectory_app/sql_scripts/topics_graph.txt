@@ -1,0 +1,81 @@
+topics_graph = {
+    "Арифметика": {"level": "basic",
+         "prerequisites": []
+    },
+    "Проценты": {
+        "level": "basic",
+        "prerequisites": ["Арифметика"]
+    },
+    "Дроби": {
+        "level": "basic",
+        "prerequisites": ["Арифметика"]
+    },
+    "Степени и корни": {
+        "level": "intermediate",
+        "prerequisites": ["Арифметика"]
+    },
+    "Выражения": {
+        "level": "basic",
+        "prerequisites": ["Проценты", "Дроби", "Степени и корни"]
+    },
+    "Уравнения (линейные, квадратные)": {
+        "level": "intermediate",
+        "prerequisites": ["Выражения"]
+    },
+    "Системы уравнений": {
+        "level": "intermediate",
+        "prerequisites": ["Уравнения (линейные, квадратные)"]
+    },
+    "Функции и графики": {
+        "level": "intermediate",
+        "prerequisites": ["Уравнения (линейные, квадратные)"]
+    },
+    "Производные": {
+        "level": "advanced",
+        "prerequisites": ["Функции и графики"]
+    },
+    "Исследование функций": {
+        "level": "advanced",
+        "prerequisites": ["Производные"]
+    },
+    "Геометрия (базовая)": {
+        "level": "basic",
+        "prerequisites": ["Арифметика"]
+    },
+    "Планиметрия": {
+        "level": "intermediate",
+        "prerequisites": ["Геометрия (базовая)"]
+    },
+    "Стереометрия": {
+        "level": "intermediate",
+        "prerequisites": ["Геометрия (базовая)"]
+    },
+    "Тригонометрия": {
+        "level": "intermediate",
+        "prerequisites": ["Планиметрия", "Уравнения (линейные, квадратные)"]
+    },
+    "Неравенства (линейные, квадратные, дробные)": {
+        "level": "intermediate",
+        "prerequisites": ["Уравнения (линейные, квадратные)"]
+    },
+    "Логарифмы": {
+        "level": "advanced",
+        "prerequisites": ["Степени и корни", "Уравнения (линейные, квадратные)"]
+    },
+    "Комбинаторика": {
+        "level": "advanced",
+        "prerequisites": ["Арифметика"]
+    },
+    "Вероятности": {
+        "level": "advanced",
+        "prerequisites": ["Комбинаторика", "Функции и графики"]
+    },
+    "Текстовые задачи": {
+        "level": "intermediate",
+        "prerequisites": ["Уравнения (линейные, квадратные)"]
+    },
+    "Задачи по геометрии": {
+        "level": "advanced",
+        "prerequisites": ["Планиметрия", "Стереометрия"]
+    }
+}
